@@ -2,42 +2,16 @@ const { default: plugin } = require("tailwindcss/plugin");
 
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        window: "url('../../public/images/window.png')",
+      },
       colors: {
-        main: "#0d0222",
-        boxTop: "#1a001f",
-        boxBottom: "#280034",
-        btnTop: "#83187f",
-        btnBottom: "#490b53",
-        areaPurple: "#190021",
-        bar: "#6b337c",
-        tableBg: "#380947",
-        tableBar: "#6b337c",
-        tableText: "#d49eff",
-        modalTop: "#220127",
-        modalBottom: "#490b53",
-        modalBorder: "#7e5486",
-        modalContent: "#752f80",
-        modalBtn: "#dfcce4",
-        modalBtnBorder: "#26003a",
-        miningBg: "#130223",
-        miningBtnBg: "#322543",
-        miningBtnHover: "#94889e",
-        miningModalTop: "#32155f",
-        miningModalBottom: "#120326",
-        miningModalBorder: "#4b2e78",
-        miningModalText: "#a875bd",
-        light_gray: "#b5b2bc",
-        hover_pink: "#d52e82",
-        top_gray: "#a3a3a3",
-        tahiti: "#3ab7bf",
-        silver: "#ecebff",
-        bubbleGum: "#ff77e9",
-        bermuda: "#78dcca",
+        main: "#FCFCFB",
       },
       width: {
         128: "32rem",
@@ -45,27 +19,29 @@ module.exports = {
       height: {
         108: "26rem",
       },
-      left: {
-        "-16": "-4rem",
-      },
-      right: {
-        "-16": "-4rem",
-      },
       minHeight: {
         "1/2": "50%",
         halfScreen: "70vh",
       },
       animation: {
+        right: "fadeRight 2.5s",
         show: "modalShow 0.3s",
+        close: "modalClose 0.3s",
         showInfinity: "modalShow 1s infinite alternate",
         showDisplay: "itemShow 0.5s",
-        boxFlicker: "flicker 1.5s infinite alternate",
-        miningFlicker: "flickerBlue 1.5s infinite alternate",
       },
       keyframes: {
+        fadeRight: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(6rem)" },
+        },
         modalShow: {
           from: { opacity: 0 },
           to: { opacity: 1 },
+        },
+        modalClose: {
+          from: { opacity: 1 },
+          to: { opacity: 2 },
         },
         itemShow: {
           from: {
@@ -77,29 +53,11 @@ module.exports = {
             transform: "scale(1)",
           },
         },
-        flicker: {
-          "0%, 18%, 22%,100%": {
-            "box-shadow":
-              "0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #cf00cf, 0 0 80px #cf00cf, 0 0 90px #cf00cf, 0 0 100px #cf00cf, 0 0 150px #cf00cf",
-          },
-          "55%": {
-            "box-shadow":
-              "0 0 2px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #cf00cf, 0 0 40px #cf00cf, 0 0 45px #cf00cf, 0 0 50px #cf00cf, 0 0 75px #cf00cf",
-          },
-        },
-        flickerBlue: {
-          "0%, 18%, 22%,100%": {
-            "box-shadow":
-              "0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #32155f, 0 0 80px #32155f, 0 0 90px #32155f, 0 0 100px #32155f, 0 0 150px #32155f",
-          },
-          "55%": {
-            "box-shadow":
-              "0 0 2px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #32155f, 0 0 40px #32155f, 0 0 45px #32155f, 0 0 50px #32155f, 0 0 75px #32155f",
-          },
-        },
       },
       animationDelay: {
+        1000: "1000ms",
         3000: "3000ms",
+        4000: "4000ms",
       },
     },
   },
