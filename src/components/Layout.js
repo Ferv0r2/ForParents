@@ -1,8 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Nav from "components/Nav";
 
+import { useRecoilState } from "recoil";
+import { scrollState, scrollBtnState } from "components/states";
+
 const Layout = ({ children }) => {
+  const [scroll, setScroll] = useRecoilState(scrollState);
+  const [scrollBtn, setScrollBtn] = useRecoilState(scrollBtnState);
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener("scroll", handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener("scroll", handleFollow);
+    };
+  });
+
+  const handleFollow = () => {
+    setScroll(window.pageYOffset);
+    if (scroll > 100) {
+      setScrollBtn(true);
+    } else {
+      setScrollBtn(false);
+    }
+  };
+
+  const toUp = (e) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setScroll(0);
+    setScrollBtn(false);
+  };
   return (
     <div>
       <Head>
@@ -24,6 +55,23 @@ const Layout = ({ children }) => {
       </Head>
       <Nav />
       <main>{children}</main>
+      {scrollBtn ? (
+        <div className="sticky right-8 bottom-8 ">
+          <div className="absolute right-8 bottom-0 justify-center items-start">
+            <div
+              className="toUp relative w-14 h-14 cursor-pointer"
+              onClick={(e) => toUp()}
+            >
+              <Image layout="fill" src="/images/onTop.png" />
+            </div>
+            <p className="text-gray-500 text-center text-sm font-[GmarketSansBold]">
+              On Top
+            </p>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

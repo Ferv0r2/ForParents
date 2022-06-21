@@ -25,6 +25,7 @@ module.exports = {
       },
       animation: {
         right: "fadeRight 2.5s",
+        rightsm: "fadeRightsm 2.5s",
         show: "modalShow 0.3s",
         close: "modalClose 0.3s",
         showInfinity: "modalShow 1s infinite alternate",
@@ -34,6 +35,10 @@ module.exports = {
         fadeRight: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(6rem)" },
+        },
+        fadeRightsm: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(3rem)" },
         },
         modalShow: {
           from: { opacity: 0 },
@@ -56,6 +61,7 @@ module.exports = {
       },
       animationDelay: {
         1000: "1000ms",
+        2000: "2000ms",
         3000: "3000ms",
         4000: "4000ms",
       },
