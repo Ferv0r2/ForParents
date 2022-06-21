@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Modal from "components/Modal";
+import Loading from "components/Loading";
 
 import { useRecoilState } from "recoil";
 import { modalState } from "components/states";
 
 const Home = () => {
   const [modal, setModal] = useRecoilState(modalState);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.localStorage.getItem("mdStatus") ? setModal(false) : setModal(true);
+    const getter = async () => {
+      (await window.localStorage.getItem("mdStatus"))
+        ? setModal(false)
+        : setModal(true);
+      await setLoading(false);
+    };
+    getter();
   }, []);
 
   const closeModal = (e) => {
@@ -19,6 +27,8 @@ const Home = () => {
       window.localStorage.setItem("mdStatus", JSON.stringify(modalObj));
     }
   };
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="bg-main bg-center bg-contain w-full">

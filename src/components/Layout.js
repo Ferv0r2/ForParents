@@ -55,6 +55,7 @@ const Layout = ({ children }) => {
       </Head>
       <Nav />
       <main>{children}</main>
+      <audio src="maria.mp3" autoPlay={true} />
       {scrollBtn ? (
         <div className="sticky right-8 bottom-8 ">
           <div className="absolute right-8 bottom-0 justify-center items-start">
