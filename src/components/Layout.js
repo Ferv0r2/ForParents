@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactAudioPlayer from "react-audio-player";
 import Head from "next/head";
 import Image from "next/image";
 import Nav from "components/Nav";
@@ -55,9 +56,9 @@ const Layout = ({ children }) => {
       </Head>
       <Nav />
       <main>{children}</main>
-      <audio src="maria.mp3" autoPlay={true} />
+      <ReactAudioPlayer src="maria.mp3" autoPlay loop />
       {scrollBtn ? (
-        <div className="sticky right-8 bottom-8 ">
+        <div className="sticky right-8 bottom-8">
           <div className="absolute right-8 bottom-0 justify-center items-start">
             <div
               className="toUp relative w-14 h-14 cursor-pointer"

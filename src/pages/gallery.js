@@ -124,7 +124,7 @@ const Gallery = () => {
   return (
     <div className="bg-zinc-100">
       <div className="max-w-3xl m-auto w-full min-h-screen">
-        <section className="pt-12">{cards}</section>
+        <section className="py-12">{cards}</section>
       </div>
     </div>
   );

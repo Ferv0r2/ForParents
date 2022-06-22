@@ -3,8 +3,8 @@ import React from "react";
 const letter = () => {
   return (
     <div className="bg-zinc-100">
-      <div className="max-w-3xl m-auto w-10/12 sm:w-full min-h-screen">
-        <div className="py-8">
+      <div className="max-w-3xl m-auto w-10/12 sm:w-full min-h-0 sm:min-h-screen">
+        <div className="py-12">
           <div className=" bg-white font-[Bareunbatang] text-sm sm:text-lg rounded-xl">
             <p className="p-6 sm:p-12">To. 부모님</p>
             <p className="px-6 sm:px-12 leading-loose font-[Donoun-Medium]">
